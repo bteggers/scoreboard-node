@@ -32,7 +32,7 @@ export default function App() {
       </Routes>
     </BrowserRouter>
     <div className="footer">
-      <p>Made by Bryce Eggers, link to <a href="https://bteggers@github.com/bteggers/scoreboard-react.git">Github</a></p>
+      <p>Made by Bryce Eggers, link to <a href="https://github.com/bteggers/scoreboard-node.git">Github</a></p>
     </div>
     </div>
   );

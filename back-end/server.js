@@ -101,7 +101,7 @@ app.get('/api/game/:id/scorehistory', async (req, res) => {
 });
 
 app.post('/api/game', async (req, res) => {
-    console.log("In the post...");
+
     let specID = (Math.random().toString(36)+'00000000000000000').slice(2, 6);
     while (await Game.exists({specID: specID})) {
         specID = (Math.random().toString(36)+'00000000000000000').slice(2, 6)
@@ -129,7 +129,6 @@ app.post('/api/game', async (req, res) => {
 });
 
 app.delete('/api/game/:id', async (req, res) => {
-  console.log("Deleting...")
   try {
     await Game.deleteOne({
       _id: req.params.id

@@ -7,7 +7,7 @@ const Layout = (props) => {
     let navigate = useNavigate();
     
     const handleExit = async () => {
-        if (props.hostID != "") {
+        if (props.hostID !== "") {
             console.log("Deleting...")
             try {
                 const response = await axios.delete('/api/game/'+props.hostID);

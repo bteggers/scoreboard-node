@@ -44,7 +44,7 @@ const Scoreboard = (props) => {
     
     
     let previousScores = Array(players.length).fill(0);
-    for (var i = 0; i < history.length; i++) {
+    for (let i = 0; i < history.length; i++) {
         let scoreChange = [];
         let currentScores = history[i];
         for (var k = 0; k < players.length; k++) {
@@ -53,7 +53,7 @@ const Scoreboard = (props) => {
         
         row = [];
         row.push(<th key = {slot++}>{i+1}</th>);
-        for (var j = 0; j < players.length; j++) {
+        for (let j = 0; j < players.length; j++) {
             if (scoreChange[j]>0) {
                 row.push(<td className = "p" key = {slot++}>{"+"+scoreChange[j]}</td>);
             } else {
@@ -64,7 +64,7 @@ const Scoreboard = (props) => {
         
         row = [];
         row.push(<th key = {slot++}></th>);
-        for (var j = 0; j < players.length; j++) {
+        for (let j = 0; j < players.length; j++) {
             row.push(<td key = {slot++}>{currentScores[j]}</td>);
         }
         table.push(<tr key = {i+1}>{row}</tr>);
