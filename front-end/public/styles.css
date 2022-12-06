@@ -1,0 +1,371 @@
+@font-face {
+  font-family: 'block';
+  src: url('Haettenschweiler-Regular.ttf');
+}
+
+.bg-light {
+  background-color: #1300E0 !important;
+}
+
+.navbar-light {
+  font-family: block;
+  letter-spacing: 0.08em;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+  color: #EEE;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #BBB;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,.navbar-light .navbar-brand:hover {
+  color: #FFF;
+}
+
+.button-range .nav-link {
+  margin: 0px;
+  padding: 0px;
+}
+
+.navbar-brand {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-brand h2 {
+  color: #fff;
+  margin-left: 15px;
+}
+
+.navbar-brand h2:hover {
+  color: #fff;
+}
+
+body {
+  color: #02010A;
+  background-color: #ADD1FF;
+  font-family: sans-serif;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: block;
+  letter-spacing: 0.08em;
+}
+
+#corner-logo {
+  width: 100px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: 700px;
+  text-align: center;
+  margin: 0px auto;
+}
+
+.main h2 {
+  margin: 50px 10px 0px 10px;
+  font-size: 2em;
+}
+
+.main h1 {
+  font-size: 3em;
+}
+
+.text p,.text ul{
+  text-align: left;
+  margin: 0px 20px;
+}
+
+.split {
+  width: 850px;
+  flex-direction: row;
+}
+
+.split .side {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.split .side:first-child {
+  margin-right: auto;
+}
+
+.button-range{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+a:hover{
+  text-decoration: none;
+}
+Link {
+  margin: 0px;
+}
+.button-range .button{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  background-color: #1300E0;
+  color: #FFF;
+  width: 250px;
+  height: 70px;
+  margin: 0px 30px;
+  margin-top: 20px;
+  border: 2px solid #02010A;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.button-range .button:hover {
+  background-color: #311FFF;
+  text-decoration: none;
+}
+
+.button-range .button img {
+  margin: 0px 20px;
+  width: 50px;
+}
+
+.button-range .button h3 {
+  margin: auto;
+  font-size: 2em;
+  color: #FFF;
+}
+
+#nameForm {
+  margin: 30px;
+  display: flex;
+}
+
+.textsubmit {
+  background-color: #1300E0;
+  color: #FFF;
+  padding: 10px;
+  margin: 0px 30px;
+  border: 2px solid #02010A;
+  border-radius: 10px;
+  text-align: center;
+  font-family: block;
+  letter-spacing: 0.08em;
+}
+
+
+.textsubmit:hover {
+  color: #FFF;
+  background-color: #311FFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.input-field{
+  width: 250px;
+  height: 50px;
+  margin: 0px 30px;
+  background-color: #DDD;
+  text-align: left;
+  border: 2px solid #02010A;
+  border-radius: 5px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formsubmit {
+  background-color: #1300E0;
+  color: #FFF;
+  width: 70px;
+  height: 70px;
+  margin: 0px 30px;
+  border: 2px solid #02010A;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.button-range .input-field p {
+  margin-left: 15px;
+}
+a:not([href]):not([tabindex]) {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.small .button{
+  width: 70px;
+  margin: 0px 15px;
+  margin-top: 20px;
+}
+
+.small .button img {
+  margin: auto 10px;
+}
+
+.ordered{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.ordered .button {
+  margin: 10px 20px;
+}
+
+.pair {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.button.disabled:hover {
+    background-color: #888;
+}
+
+.button.disabled {
+    background-color: #888;
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #DDD;
+  border: 2px solid #02010A;
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  margin: 10px;
+}
+
+.score p {
+  margin: 0px 20px 0px auto;
+}
+.score h3 {
+  margin: 0px 0px 0px 20px;
+}
+
+Table {
+  margin: 20px;
+}
+
+Table Th {
+  font-family: "block";
+  letter-spacing: 0.08em;
+  font-size: 1.2em;
+  font-weight: normal;
+}
+
+Table Tr:nth-child(4n+2) {
+  background-color: #DDD;
+  border: 0px solid;
+  border-radius: 5px 5px 0px 0px;
+}
+
+Table Tr:nth-child(4n+2) Th {
+  border-radius: 10px 0px 0px 0px;
+}
+Table Tr:nth-child(4n+2) Td:last-child {
+  border-radius: 0px 10px 0px 0px;
+}
+
+Table Tr:nth-child(4n+3) {
+  background-color: #DDD;
+  border-radius: 15px;
+}
+
+Table Tr:nth-child(4n+3) Td:first-child {
+  border-radius: 0px 0px 0px 10px;
+}
+Table Tr:nth-child(4n+3) Td:last-child {
+  border-radius: 0px 0px 10px 0px;
+}
+
+Table Tr:nth-child(odd) {
+  font-weight: bold;
+}
+Table .o {
+  font-style: italic;
+}
+Table .p {
+  color: #2B7325;
+}
+
+.name {
+  width: 150px;
+}
+.round {
+  width: 50px;
+  border-radius: 15px;
+}
+
+
+
+.footer {
+  margin-top: 50px;
+}
+.footer p {
+  width: 700px;
+  margin: 20px auto;
+  font-style: italic;
+  font-size: .7em;
+}
+
+
+@media only screen and (max-width: 850px) {
+  .main{
+    width: 100%;
+    flex-direction: column;
+  }
+  .split .side {
+    align-self: center;
+  }
+  .split .side:first-child {
+  margin-right: 0px;
+  }
+  Table {
+    display: block;
+    overflow-x: auto;
+  }
+  .footer {
+    width: 100%;
+  }
+  .footer p {
+    width: auto;
+    margin: 20px 40px;
+  }
+}
+
+a:hover {
+ cursor:pointer;
+}
+
+@media only screen and (max-width: 450px) {
+  .split .side {
+    width: 100%;
+  }
+  .score {
+    width: 90%;
+  }
+}
