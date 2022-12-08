@@ -11,18 +11,18 @@ class BankScore extends Component {
     render() {
         return (
             <div className = "pair">
-                    {this.props.isIn ? (
-                    <div className = "button" onClick={e => this.props.setPlayerScore(this.props.player)}>
-                        <img src={PiggyBank} alt="Bank"/>
-                    </div>) : (
-                    <div className = "button disabled">
-                        <img src={PiggyBank} alt="Bank"/>
-                    </div>)
-                    }
-                    <div className = "score">
+                    <div className = "textbox">
                         <h3>{this.props.name}</h3>
                         <p>{this.props.score}</p>
                     </div>
+                    {this.props.isIn ? (
+                    <div className = "button small" onClick={e => this.props.setPlayerScore(this.props.player)}>
+                        <img src={PiggyBank} alt="Bank"/>
+                    </div>) : (
+                    <div className = "button small disabled">
+                        <img src={PiggyBank} alt="Bank"/>
+                    </div>)
+                    }
                 </div>   
         );
     }

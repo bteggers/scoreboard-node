@@ -16,8 +16,8 @@ const NewGame = (props) => {
             setPlayers(currentPlayers);
             setInput("");
             console.log(players);
-            event.preventDefault();
         }
+        event.preventDefault();
     }
     
     const handleChange = (event) => {
@@ -43,14 +43,14 @@ const NewGame = (props) => {
             {players.map((playerName) => 
                 <p>{playerName}</p>
             )}
-            <form onSubmit = {handleNewPlayer} onChange={handleChange} id = "nameForm">
+            <form onSubmit = {handleNewPlayer} onChange={handleChange} className = "pair">
                 
-                <input type="text" name="name" value = {input} className = "input-field" placeholder = "Name"/>
+                <input type="text" name="name" value = {input} className = "textbox fixedwidth" placeholder = "Name"/>
                 
-                <input type="submit" value="Add" className = "textsubmit"/>
+                <input type="submit" value="Add" className = "button small verticalmarginless"/>
             </form>
-            <div>
-                <h3 onClick = {handleGameStart} className = "textsubmit">Start Game!</h3>
+            <div className = "button large">
+                <h3 onClick = {handleGameStart}>Start!</h3>
             </div>
         </div>);
     

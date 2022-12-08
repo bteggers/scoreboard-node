@@ -39,33 +39,31 @@ const Home = (props) => {
             <img src={ScoreboardLogo}  alt="logo"/>
             <h2>Start Game!</h2>
             <div className = "button-range">
-                <Link to="/newgame" className="nav-link">
-                    <div className = "button">
-                        <img src={PiggyBank} alt="Bank"/>
-                        <h3>Bank</h3>
-                    </div>
-                </Link>
+                <div className = "large button" onClick = {()=>navigate("/newgame")}>
+                    <img src={PiggyBank} alt="Bank"/>
+                    <h3>Bank</h3>
+                </div>
             
-                <div className = "button">
+                <div className = "button large">
                     <img src={Raven} alt="Rook"/>
                     <h3>Rook</h3>
                 </div>
             
-                <div className = "button">
+                <div className = "button large">
                     <img src={Cards} alt="Cards"/>
                     <h3>Nertz</h3>
                 </div>
             
-                <div className = "button">
+                <div className = "button large">
                     <img src={Meeple} alt="Meeple"/>
                     <h3>Other</h3>
                 </div>
             </div>
             
             <h2>Join Game!</h2>
-            <form onSubmit = {handleSubmit} onChange={handleChange}>
-                <input type="text" name="room" value = {input} className = "input-field" placeholder = {roomTextMessage}/>
-                <input type="image" src = {Enter} className = "formsubmit" width = "20"/>
+            <form onSubmit = {handleSubmit} className = "pair">
+                <input type="text" name="room" value = {input} className = "textbox fixedwidth" placeholder = {roomTextMessage} onChange={handleChange}/>
+                <input type="image" src = {Enter} className = "button small verticalmarginless" width = "20"/>
             </form>
         </div>
     )

@@ -48,7 +48,7 @@ const Spectator = (props) => {
     let scores = [];
     
     for (let i = 0; i < players.length; i++) {
-        scores.push(<div class = "score" key = {i}><h3>{players[i].name}</h3><p>{players[i].score}</p></div>)
+        scores.push(<div class = "textbox" key = {i}><h3>{players[i].name}</h3><p>{players[i].score}</p></div>)
     }
     return (
         <div class = "main">

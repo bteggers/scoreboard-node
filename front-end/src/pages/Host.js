@@ -133,7 +133,7 @@ const Host = (props) => {
                 <h2>Current Points</h2>
                 <h1>{roundScore}</h1>
                 <h2>Roll: {rollNumber}</h2>
-                <div className = "button-range small">
+                <div className = "button-range">
                     {rollButtons}
                     <Roll value = {"x2"} rollNum = {rollNum} />
                 </div>
@@ -141,7 +141,7 @@ const Host = (props) => {
             <div className = "side">
                 <h2>Round: {round}</h2>
                 <h2>Bank</h2>
-                <div className = "button-range small ordered">
+                <div className = "button-range ordered">
                     {playerButtons}
                 </div>
             </div>

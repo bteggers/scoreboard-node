@@ -3,24 +3,24 @@
   src: url('Haettenschweiler-Regular.ttf');
 }
 
-.bg-light {
+.bg-dark {
   background-color: #1300E0 !important;
 }
 
-.navbar-light {
+.navbar-dark {
   font-family: block;
   letter-spacing: 0.08em;
 }
 
-.navbar-light .navbar-nav .active>.nav-link {
+.navbar-dark .navbar-nav .active>.nav-link {
   color: #EEE;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-dark .navbar-nav .nav-link {
   color: #BBB;
 }
 
-.navbar-light .navbar-nav .nav-link:hover,.navbar-light .navbar-brand:hover {
+.navbar-dark .navbar-nav .nav-link:hover,.navbar-brand:hover {
   color: #FFF;
 }
 
@@ -67,6 +67,7 @@ h1,h2,h3,h4,h5,h6 {
   flex-direction: column;
   justify-content: center;
   align-self: center;
+  align-items: center;
   width: 700px;
   text-align: center;
   margin: 0px auto;
@@ -115,89 +116,54 @@ a:hover{
 Link {
   margin: 0px;
 }
-.button-range .button{
+.button{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-content: center;
+  align-items: center;
   background-color: #1300E0;
+  width: auto;
   color: #FFF;
-  width: 250px;
   height: 70px;
-  margin: 0px 30px;
-  margin-top: 20px;
   border: 2px solid #02010A;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
+  font-family: block;
+  letter-spacing: 0.08em;
 }
 
-.button-range .button:hover {
+.button:hover {
   background-color: #311FFF;
   text-decoration: none;
+  cursor: pointer;
+}
+.button h3:hover {
+  cursor: pointer;
 }
 
-.button-range .button img {
+.button img {
   margin: 0px 20px;
   width: 50px;
 }
 
-.button-range .button h3 {
+.button h3 {
   margin: auto;
   font-size: 2em;
   color: #FFF;
 }
 
-#nameForm {
-  margin: 30px;
-  display: flex;
-}
-
-.textsubmit {
-  background-color: #1300E0;
-  color: #FFF;
-  padding: 10px;
-  margin: 0px 30px;
-  border: 2px solid #02010A;
-  border-radius: 10px;
-  text-align: center;
-  font-family: block;
-  letter-spacing: 0.08em;
-}
-
-
-.textsubmit:hover {
-  color: #FFF;
-  background-color: #311FFF;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.input-field{
+.large {
   width: 250px;
-  height: 50px;
   margin: 0px 30px;
-  background-color: #DDD;
-  text-align: left;
-  border: 2px solid #02010A;
-  border-radius: 5px;
+  margin-top: 20px;
 }
 
-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.formsubmit {
-  background-color: #1300E0;
-  color: #FFF;
+.small {
   width: 70px;
-  height: 70px;
-  margin: 0px 30px;
-  border: 2px solid #02010A;
-  border-radius: 10px;
-  text-align: center;
+  margin: 0px 15px;
+  margin-top: 20px;
 }
 
 .button-range .input-field p {
@@ -208,11 +174,7 @@ a:not([href]):not([tabindex]) {
     text-decoration: none;
 }
 
-.small .button{
-  width: 70px;
-  margin: 0px 15px;
-  margin-top: 20px;
-}
+
 
 .small .button img {
   margin: auto 10px;
@@ -233,21 +195,22 @@ a:not([href]):not([tabindex]) {
 
 .pair {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-top: 15px;
 }
 
 .button.disabled:hover {
     background-color: #888;
+    cursor: default;
 }
 
 .button.disabled {
     background-color: #888;
 }
 
-.score {
+.textbox {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -260,10 +223,14 @@ a:not([href]):not([tabindex]) {
   margin: 10px;
 }
 
-.score p {
+.textbox.fixedwidth {
+  width: 250px;
+}
+
+.textbox p {
   margin: 0px 20px 0px auto;
 }
-.score h3 {
+.textbox h3 {
   margin: 0px 0px 0px 20px;
 }
 
@@ -321,7 +288,10 @@ Table .p {
   border-radius: 15px;
 }
 
-
+.verticalmarginless {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
 .footer {
   margin-top: 50px;
