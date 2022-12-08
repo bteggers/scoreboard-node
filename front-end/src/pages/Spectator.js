@@ -5,7 +5,7 @@ import axios from 'axios';
 const Spectator = (props) => {
     const [players, setPlayers] = useState([]);
     const [roundScore, setRoundScore] = useState(0);
-    const specID = props.specID;
+    let specID = props.specID;
     
     useEffect(() => {
         fetchPlayers();
@@ -18,7 +18,7 @@ const Spectator = (props) => {
             fetchScore();
         }, 3000);
         return () => clearInterval(interval);
-    }, []);
+    }, [specID]);
     
     
     const fetchPlayers = async () => {

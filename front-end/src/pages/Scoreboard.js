@@ -16,7 +16,7 @@ const Scoreboard = (props) => {
             fetchHistory();
         }, 5000);
         return () => clearInterval(interval);
-    }, []);
+    }, [specID]);
     
     
     const fetchHistory = async () => {

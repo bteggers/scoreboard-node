@@ -10,12 +10,14 @@ const NewGame = (props) => {
     const navigate = useNavigate();
     
     const handleNewPlayer = (event) => {
-        let currentPlayers = players;
-        currentPlayers.push(input);
-        setPlayers(currentPlayers);
-        setInput("");
-        console.log(players);
-        event.preventDefault();
+        if (input !== "") {
+            let currentPlayers = players;
+            currentPlayers.push(input);
+            setPlayers(currentPlayers);
+            setInput("");
+            console.log(players);
+            event.preventDefault();
+        }
     }
     
     const handleChange = (event) => {

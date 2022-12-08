@@ -27,7 +27,8 @@ const gameSchema = new mongoose.Schema({
   roundScore: Number,
   currentRound: Number,
   maxRound: Number,
-  scoreHistory: [Number]
+  scoreHistory: [Number],
+  rollCount: Number
 });
 
 gameSchema.virtual('id')
@@ -65,21 +66,21 @@ app.get('/api/game/:id/playerStates', async (req, res) => {
 
 app.get('/api/game/:id/roundScore', async (req, res) => {
   if (req.params.id.length === 4) {
-    Game.findOne({'specID': req.params.id }, 'roundScore', function (err, game) {
+    Game.findOne({'specID': req.params.id }, 'roundScore currentRound rollCount', function (err, game) {
         if (err){
             console.log(err);
             res.sendStatus(500);
         }
-        res.send({roundScore: game.roundScore})
+        res.send({roundScore: game.roundScore, currentRound: game.currentRound, rollCount: game.rollCount})
     });
   } else {
-    Game.findOne({'_id': req.params.id }, 'roundScore', function (err, game) {
+    Game.findOne({'_id': req.params.id }, 'roundScore currentRound rollCount', function (err, game) {
       if (err){
         console.log(req);
         console.log(err);
         res.sendStatus(500);
       }
-      res.send({roundScore: game.roundScore})
+      res.send({roundScore: game.roundScore, currentRound: game.currentRound, rollCount: game.rollCount})
     });
   }
 });
@@ -116,6 +117,7 @@ app.post('/api/game', async (req, res) => {
         players: playerList,
         roundScore: 0,
         currentRound: 1,
+        rollCount: 1,
         maxRound: req.body.maxround,
         scoreHistory: []
     });
@@ -150,11 +152,22 @@ app.put('/api/game/:id/roundscore/:score', async (req,res) => {
   }
 });
 
+app.put('/api/game/:id/rollcount/:count', async (req,res) => {
+  let count = parseInt(req.params.count);
+  try {
+    await Game.findOneAndUpdate({_id: req.params.id},{rollCount: count});
+    res.send({id: req.params.id, rollCount: count});
+  } catch(error) {
+      res.send(error)
+  }
+});
+
 app.put('/api/game/:id/resetround', async (req,res) => {
   try {
     let game = await Game.findOne({_id: req.params.id});
     game.currentRound += 1;
     game.roundScore = 0;
+    game.rollCount = 1;
     for (let i = 0; i < game.players.length; i++) {
         game.scoreHistory.push(game.players[i].score);
         game.players[i].stillIn = true;

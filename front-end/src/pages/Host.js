@@ -10,8 +10,9 @@ const Host = (props) => {
     const [players,setPlayers] = useState([]);
     const [roundScore,setRoundScore] = useState(0);
     const [update,setUpdate] = useState(0);
+    const [round, setRound] = useState(0);
     const hostID = props.hostID;
-    const [rollNumber, setRollNumber] = useState(0);
+    const [rollNumber, setRollNumber] = useState(1);
     
     useEffect(() => {
         fetchScore();
@@ -41,6 +42,8 @@ const Host = (props) => {
             const response = await axios.get("/api/game/"+hostID+"/roundscore");
             console.log(response);
             setRoundScore(response.data.roundScore);
+            setRollNumber(response.data.rollCount);
+            setRound(response.data.currentRound);
         }
         catch(error) {
             console.log(error);
@@ -49,13 +52,13 @@ const Host = (props) => {
     
     const rollNum = (num) => {
         if (num === "x2") {
-            if (rollNumber < 3) {
+            if (rollNumber <= 3) {
                 return;
             }
             setRoundScoreWrapper(roundScore*2);
         }
         else if(num === 7) {
-            if (rollNumber < 3) {
+            if (rollNumber <= 3) {
                 setRoundScoreWrapper(roundScore + 70);
             }
             else {
@@ -66,8 +69,7 @@ const Host = (props) => {
         else {
             setRoundScoreWrapper(roundScore + num);
         }
-        console.log("Roll Number: "+rollNumber);
-        setRollNumber(rollNumber+1);
+        setRollNumberWrapper(rollNumber+1);
     }
     
     const setRoundScoreWrapper = async (newScore) => {
@@ -81,9 +83,20 @@ const Host = (props) => {
         }
     }
     
+    const setRollNumberWrapper = async (newCount) => {
+        setRollNumber(newCount);
+        try {
+            const response = await axios.put("/api/game/"+hostID+"/rollcount/"+newCount);
+            console.log(response);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    
     const resetRound = async () => {
         setRoundScore(0);
-        setRollNumber(0);
+        setRollNumber(1);
         try {
             const response = await axios.put("/api/game/"+hostID+"/resetround");
             console.log(response);
@@ -117,14 +130,16 @@ const Host = (props) => {
     
     return (<div className = "main split">
             <div className = "side">
-                <h2>Points on the Board</h2>
+                <h2>Current Points</h2>
                 <h1>{roundScore}</h1>
+                <h2>Roll: {rollNumber}</h2>
                 <div className = "button-range small">
                     {rollButtons}
                     <Roll value = {"x2"} rollNum = {rollNum} />
                 </div>
             </div>
             <div className = "side">
+                <h2>Round: {round}</h2>
                 <h2>Bank</h2>
                 <div className = "button-range small ordered">
                     {playerButtons}

@@ -19,10 +19,6 @@ export default function App() {
   //window.sessionStorage.setItem("specID", specID);
   
   useEffect(() => {
-    console.log("Preparing to load")
-    console.log(sessionStorage.getItem("specID"));
-    console.log(sessionStorage.getItem("specID"));
-    console.log(sessionStorage.getItem("hostID"));
     if (sessionStorage.getItem("specID") !== "") {
       setSpecID(sessionStorage.getItem("specID"));
       setHostID(sessionStorage.getItem("hostID"));
@@ -32,9 +28,6 @@ export default function App() {
   useEffect(() => {
       sessionStorage.setItem("hostID", hostID);
       sessionStorage.setItem("specID", specID);
-      console.log("Recording info");
-      console.log(sessionStorage.getItem("specID"));
-      console.log(sessionStorage.getItem("hostID"));
   }, [specID]);
   
   return (
