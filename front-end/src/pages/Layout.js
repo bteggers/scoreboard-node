@@ -1,5 +1,7 @@
 import React from 'react';
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import ScoreboardLogoW from '../icons/scoreboard_w.svg';
 import axios from 'axios';
 
@@ -8,18 +10,38 @@ const Layout = (props) => {
     
     const handleExit = async () => {
         if (props.hostID !== "") {
-            console.log("Deleting...")
-            try {
-                const response = await axios.delete('/api/game/'+props.hostID);
-                console.log(response);
-            }
-            catch (error) {
-                console.log(error);
-            }
+            confirmAlert({
+                title: 'Exit Game',
+                message: 'Exiting will delete the current game. Are you sure?',
+                buttons: [
+                {
+                    label: 'Cancel',
+                    onClick: () => {}
+                },
+                {
+                    label: 'Exit',
+                    onClick: async () => {
+                        console.log("Deleting...")
+                        try {
+                            const response = await axios.delete('/api/game/'+props.hostID);
+                            console.log(response);
+                        }
+                        catch (error) {
+                            console.log(error);
+                        }
+                        props.setHostID("");
+                        props.setSpecID("");
+                        navigate("/")
+                    }
+                }]
+                
+            });
+            
+        } else {
+            props.setHostID("");
+            props.setSpecID("");
+            navigate("/")
         }
-        props.setHostID("");
-        props.setSpecID("");
-        navigate("/")
     }
     
     let location = useLocation().pathname;

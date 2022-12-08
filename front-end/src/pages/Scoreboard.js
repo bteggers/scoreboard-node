@@ -9,7 +9,7 @@ const Scoreboard = (props) => {
     
     useEffect(() => {
         fetchHistory();
-    },[]);
+    },[props.specID]);
     
     useEffect(() => {
         const interval = setInterval(() => {

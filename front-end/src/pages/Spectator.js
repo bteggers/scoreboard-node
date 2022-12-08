@@ -4,15 +4,18 @@ import axios from 'axios';
 
 const Spectator = (props) => {
     const [players, setPlayers] = useState([]);
+    const [roundScore, setRoundScore] = useState(0);
     const specID = props.specID;
     
     useEffect(() => {
         fetchPlayers();
-    },[]);
+        fetchScore();
+    },[props.specID]);
     
     useEffect(() => {
         const interval = setInterval(() => {
             fetchPlayers();
+            fetchScore();
         }, 3000);
         return () => clearInterval(interval);
     }, []);
@@ -30,6 +33,18 @@ const Spectator = (props) => {
         }
     };
     
+    const fetchScore = async () => {
+        console.log("Getting Scores");
+        try {
+            const response = await axios.get("/api/game/"+specID+"/roundScore");
+            console.log(response);
+            setRoundScore(response.data.roundScore);
+        }
+        catch(error) {
+            console.log(error);
+        }
+    };
+    
     let scores = [];
     
     for (let i = 0; i < players.length; i++) {
@@ -37,6 +52,8 @@ const Spectator = (props) => {
     }
     return (
         <div class = "main">
+            <h2>Points on board</h2>
+            <h1>{roundScore}</h1>
             <h2>Current Scores</h2>
             <div class = "ordered">
                 {scores}

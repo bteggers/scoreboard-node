@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Layout from "./pages/Layout.js";
 import Home from "./pages/Home.js";
 import About from "./pages/About.js";
@@ -15,6 +15,27 @@ export default function App() {
   
   const [hostID, setHostID] = useState("");
   const [specID, setSpecID] = useState("");
+  //window.sessionStorage.setItem("hostID", hostID);
+  //window.sessionStorage.setItem("specID", specID);
+  
+  useEffect(() => {
+    console.log("Preparing to load")
+    console.log(sessionStorage.getItem("specID"));
+    console.log(sessionStorage.getItem("specID"));
+    console.log(sessionStorage.getItem("hostID"));
+    if (sessionStorage.getItem("specID") !== "") {
+      setSpecID(sessionStorage.getItem("specID"));
+      setHostID(sessionStorage.getItem("hostID"));
+    }
+  }, []);
+
+  useEffect(() => {
+      sessionStorage.setItem("hostID", hostID);
+      sessionStorage.setItem("specID", specID);
+      console.log("Recording info");
+      console.log(sessionStorage.getItem("specID"));
+      console.log(sessionStorage.getItem("hostID"));
+  }, [specID]);
   
   return (
     <div>

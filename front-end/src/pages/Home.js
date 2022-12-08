@@ -11,17 +11,21 @@ import Meeple from '../icons/pawns_w.svg';
 
 const Home = (props) => {
     const [input,setInput] = useState("");
+    const [roomTextMessage, setRoomTextMessage] = useState("Type Room Code");
     const navigate = useNavigate();
+    
+    
     
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            const response = await axios.get("/api/game/"+input+"/playerstates");
-            props.setSpecID(input);
-            console.log("Entered room code: "+input);
+            const response = await axios.get("/api/game/"+input.toLowerCase()+"/playerstates");
+            props.setSpecID(input.toLowerCase());
             navigate("/spectator");
         }
         catch (error) {
+            setInput("");
+            setRoomTextMessage("Invalid Code")
             console.log(error);
         }
     }
@@ -60,7 +64,7 @@ const Home = (props) => {
             
             <h2>Join Game!</h2>
             <form onSubmit = {handleSubmit} onChange={handleChange}>
-                <input type="text" name="room" value = {input} className = "input-field" placeholder = "Type Room Code"/>
+                <input type="text" name="room" value = {input} className = "input-field" placeholder = {roomTextMessage}/>
                 <input type="image" src = {Enter} className = "formsubmit" width = "20"/>
             </form>
         </div>

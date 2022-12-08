@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import {Component} from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import PiggyBank from '../icons/piggy-bank_w.svg';
 import Roll from "../components/Roll.js";
@@ -15,13 +14,14 @@ const Host = (props) => {
     const [rollNumber, setRollNumber] = useState(0);
     
     useEffect(() => {
-        fetchPlayers();
         fetchScore();
+        fetchPlayers();
     },[]);
     
     useEffect(() => {
+        fetchScore();
         fetchPlayers();
-    },[update]);
+    },[update, props.hostID]);
     
     const fetchPlayers = async () => {
         console.log("Getting Players");
@@ -40,7 +40,7 @@ const Host = (props) => {
         try {
             const response = await axios.get("/api/game/"+hostID+"/roundscore");
             console.log(response);
-            setPlayers(response.data.roundScore);
+            setRoundScore(response.data.roundScore);
         }
         catch(error) {
             console.log(error);

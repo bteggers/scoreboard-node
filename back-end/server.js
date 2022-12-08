@@ -70,7 +70,7 @@ app.get('/api/game/:id/roundScore', async (req, res) => {
             console.log(err);
             res.sendStatus(500);
         }
-        res.send({players: game.players})
+        res.send({roundScore: game.roundScore})
     });
   } else {
     Game.findOne({'_id': req.params.id }, 'roundScore', function (err, game) {
