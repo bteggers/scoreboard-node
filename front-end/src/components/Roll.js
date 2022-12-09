@@ -9,7 +9,7 @@ class Roll extends Component {
     
     render() {
         return (
-            <div className = "button small" onClick={e => this.props.rollNum(this.props.value)}>
+            <div className = {this.props.rollCount<=3 && this.props.value==="x2"?("button disabled small"):("button small")} onClick={e => this.props.rollNum(this.props.value)}>
                 <h3>{this.props.value}</h3>
             </div>    
         );

@@ -28,3 +28,4 @@ class BankScore extends Component {
     }
 }
 export default BankScore;
+

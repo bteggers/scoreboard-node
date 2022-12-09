@@ -63,6 +63,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .main {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,7 +75,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .main h2 {
-  margin: 50px 10px 0px 10px;
+  margin: 20px 10px 0px 10px;
   font-size: 2em;
 }
 
@@ -204,6 +205,10 @@ a:not([href]):not([tabindex]) {
 .button.disabled:hover {
     background-color: #888;
     cursor: default;
+}
+
+.button.disabled h3:hover {
+  cursor: default;
 }
 
 .button.disabled {

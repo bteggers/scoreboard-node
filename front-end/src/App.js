@@ -7,6 +7,7 @@ import Home from "./pages/Home.js";
 import About from "./pages/About.js";
 import Spectator from "./pages/Spectator.js";
 import Scoreboard from "./pages/Scoreboard.js";
+import FinalResults from "./pages/FinalResults.js";
 import Host from "./pages/Host.js";
 import NewGame from "./pages/NewGame.js";
 import NoPage from "./pages/NoPage.js";
@@ -15,8 +16,7 @@ export default function App() {
   
   const [hostID, setHostID] = useState("");
   const [specID, setSpecID] = useState("");
-  //window.sessionStorage.setItem("hostID", hostID);
-  //window.sessionStorage.setItem("specID", specID);
+  const [currentRound, setCurrentRound] = useState(1);
   
   useEffect(() => {
     if (sessionStorage.getItem("specID") !== "") {
@@ -34,12 +34,13 @@ export default function App() {
     <div>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout hostID = {hostID} specID = {specID} setHostID = {setHostID} setSpecID = {setSpecID}/>}>
+        <Route path="/" element={<Layout hostID = {hostID} specID = {specID} setHostID = {setHostID} setSpecID = {setSpecID} currentRound = {currentRound} setRound = {setCurrentRound}/>}>
           <Route index element={<Home setSpecID = {setSpecID}/>} />
           <Route path="NewGame" element={<NewGame setHostID = {setHostID} setSpecID = {setSpecID}/>} />
-          <Route path="Host" element={<Host hostID = {hostID}/>} />
-          <Route path="Spectator" element={<Spectator specID = {specID}/>} />
-          <Route path="Scoreboard" element={<Scoreboard specID = {specID}/>} />
+          <Route path="Host" element={<Host hostID = {hostID} currentRound = {currentRound} setRound = {setCurrentRound}/>} />
+          <Route path="Spectator" element={<Spectator specID = {specID} currentRound = {currentRound} setRound = {setCurrentRound}/>} />
+          <Route path="Scoreboard" element={<Scoreboard specID = {specID} currentRound = {currentRound} setRound = {setCurrentRound}/>} />
+          <Route path="FinalResults" element={<FinalResults specID = {specID} currentRound = {currentRound} setRound = {setCurrentRound}/>} />
           <Route path="About" element={<About />} />
           <Route path="*" element={<NoPage />} />
         </Route>

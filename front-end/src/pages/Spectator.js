@@ -1,11 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const Spectator = (props) => {
     const [players, setPlayers] = useState([]);
     const [roundScore, setRoundScore] = useState(0);
     let specID = props.specID;
+    let navigate = useNavigate();
     
     useEffect(() => {
         fetchPlayers();
@@ -39,6 +41,10 @@ const Spectator = (props) => {
             const response = await axios.get("/api/game/"+specID+"/roundScore");
             console.log(response);
             setRoundScore(response.data.roundScore);
+            props.setRound(response.data.currentRound);
+            if (response.data.currentRound > 20) {
+                navigate("/finalresults");
+            }
         }
         catch(error) {
             console.log(error);
@@ -46,15 +52,19 @@ const Spectator = (props) => {
     };
     
     let scores = [];
+    let playerRanks = players;
+    playerRanks.sort((a,b) => (a.score < b.score)? 1:-1);
     
     for (let i = 0; i < players.length; i++) {
-        scores.push(<div class = "textbox" key = {i}><h3>{players[i].name}</h3><p>{players[i].score}</p></div>)
+        scores.push(<div class = "textbox" key = {i}><h3>{playerRanks[i].name}</h3><p>{playerRanks[i].score}</p></div>)
     }
     return (
         <div class = "main">
+            
             <h2>Points on board</h2>
             <h1>{roundScore}</h1>
             <h2>Current Scores</h2>
+            <h3>Round: {props.currentRound}/20</h3>
             <div class = "ordered">
                 {scores}
             </div>
